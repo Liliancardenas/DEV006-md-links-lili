@@ -1,9 +1,9 @@
 const path = require('path'); // para llamar ruta absoluta desde nodeJS path es un modulo 
-const fs = require('fs'); // file system 
+const fs = require('fs'); // file system hace la lectura de los archivos 
 
 
 // ----------Funcion que lee una ruta absoluta----------
-function isABsolute(route) { // isAbsolute es funcion de nodeJs 
+function isABsolute(route) { // isAbsolute es una propiedad de nodeJs para validar una ruta absoluta
   try {
      return path.isAbsolute(route);
   } catch (error) {
@@ -27,12 +27,14 @@ function isRelative(route) {
 // ----------Funcion que lee si una ruta es valida o no----------
  function isValid(route) {
   try {
-    return fs.existsSync(route);  // síncrona, si un archivo ya existe en la ruta dada o no devuelve un boleano
+   fs.accessSync(route);  // esta funcion no devuelve un boleano por ello se retorna un boleano
+    return true;
   } catch (error) {
-    console.log('Error: ', error);
+    console.log('ERROR', error);
+    return false;
   }
  }
-//console.log(isValid('C:\\Users\\56957\\Desktop\\Laboratoria\\MD-LINKS\\DEV006-md-links-lili\\package-lock.json'));
+//console.log(isValid('C:/Users---56957¬Desktop/Laboratoria/MD-LINKS....DEV006-md-links-lili/README.md'));
 
 
 // ----------Funcion que lee si la ruta es .md----------
