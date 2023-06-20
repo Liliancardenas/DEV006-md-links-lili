@@ -10,7 +10,7 @@ function isABsolute(route) { // isAbsolute es funcion de nodeJs
     console.log('Error: ', error);
   }
 }
-console.log(isABsolute('C:\\Users\\56957\\Desktop\\Laboratoria\\MD-LINKS\\DEV006-md-links-lili\\lili.md'));
+//console.log(isABsolute('C:\\Users\\56957\\Desktop'));
 
 
 // ----------Funcion que convierte una ruta relativa en absoluta----------
@@ -21,7 +21,7 @@ function isRelative(route) {
     console.log('Error: ', error);
   }
 }
- console.log(isRelative('lili.md'))
+ //console.log(isRelative('lili.md'))
 
 
 // ----------Funcion que lee si una ruta es valida o no----------
@@ -32,7 +32,7 @@ function isRelative(route) {
     console.log('Error: ', error);
   }
  }
-console.log(isValid('C:\\Users\\56957\\Desktop\\Laboratoria\\MD-LINKS\\DEV006-md-links-lili\\package-lock.json'));
+//console.log(isValid('C:\\Users\\56957\\Desktop\\Laboratoria\\MD-LINKS\\DEV006-md-links-lili\\package-lock.json'));
 
 
 // ----------Funcion que lee si la ruta es .md----------
@@ -44,7 +44,7 @@ try {
   console.log('Error: ', error);
  }
 }
-console.log(isMarkdown('C:\Users\\56957\\Desktop\\Laboratoria\\MD-LINKS\\DEV006-md-links-lili\\package-lock.json'))
+//console.log(isMarkdown('C:\Users\\56957\\Desktop\\Laboratoria\\MD-LINKS\\DEV006-md-links-lili\\package-lock.json'))
 
 
 
