@@ -50,6 +50,42 @@ try {
 
 
 
+// ----------Función que ve si es directorio o archivo---------
+function fileOrDirectory(route) { // 
+  try {
+  const inspectRoute = path.resolve(route);
+  const stats = fs.statSync(inspectRoute); // statSync identifica si es un directorio o archivo 
+  if (stats.isFile()) {
+    return 'Es un Archivo';
+  } else if(stats.isDirectory()){
+    return 'Es un Directorio';
+  }else{
+    return 'Desconocido';
+  }
+    } catch (error) {
+        console.log('Error: Archivo/directorio roto o no encontrado', error); 
+  }
+}
+//console.log(fileOrDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/'))
+
+
+//----------Funcion que lee los directorios---------- 
+function readDirectory(route) {
+  
+}
+
+
+
+
+/*function readContent(route) {
+  try {
+    const 
+  } catch (error) {
+    
+  }
+}*/
+
+
 module.exports =  {  // crear un objeto con lo que vamos a exporta
  isABsolute,
  isRelative,
