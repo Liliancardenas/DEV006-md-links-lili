@@ -1,6 +1,6 @@
 const { isABsolute, isRelative, isValid, isMarkdown } = require("./path");
 
-function mdLinks(route) {
+function analyzeRoute(route) {
    let abs = isABsolute(route);
    const rel = isRelative(route);
    const val = isValid(route);
@@ -13,7 +13,7 @@ function mdLinks(route) {
        console.log(newRoute);
    } 
 
-   if ( abs === true && val === true && md === true ) {
+   if ( abs === true && val === true ) {
       result = true;
    } 
    else {
@@ -24,6 +24,6 @@ function mdLinks(route) {
   
 }
 
-console.log(mdLinks('/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/lili.md'));
+console.log(analyzeRoute('/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/lili.md'));
 
 //C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/lili.md
