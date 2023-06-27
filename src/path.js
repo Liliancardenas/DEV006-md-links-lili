@@ -41,19 +41,6 @@ function isRelative(route) {
 
 
 
-// ----------Funcion que lee si la ruta es .md----------
-function isMarkdown(route) {
-try {
-  const extension = path.extname(route); // extname para obtener la extensión del archivo en la ruta especificada
-  return extension.toLowerCase() === '.md'; // se compara si la extensión convertida a minúsculas es igual a ".md"
- } catch (error) {
-  console.log('Error: ', error);
- }
-}
-//console.log(isMarkdown('C:\Users\\56957\\Desktop\\Laboratoria\\MD-LINKS\\DEV006-md-links-lili\\package-lock.json'))
-
-
-
 // ----------Función que ve si es directorio o archivo---------
 function fileOrDirectory(route) { // 
   try {
@@ -100,9 +87,22 @@ function readDirectory(route) {
     console.log('Error: ', error);
   });
 }
-console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'));
+//console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'));
 
 
+
+// ----------Funcion que lee si la ruta es .md----------
+function isMarkdown(route) {
+  try {
+    const extension = path.extname(route); // extname para obtener la extensión del archivo en la ruta especificada
+    return extension.toLowerCase() === '.md'; // se compara si la extensión convertida a minúsculas es igual a ".md"
+   } catch (error) {
+    console.log('Error: ', error);
+   }
+  }
+  //console.log(isMarkdown('C:\Users\\56957\\Desktop\\Laboratoria\\MD-LINKS\\DEV006-md-links-lili\\package-lock.json'))
+  
+  
   
 module.exports =  {  // crear un objeto con lo que vamos a exporta
  isABsolute,

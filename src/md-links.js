@@ -24,6 +24,6 @@ function mdLinks(route) {
   
 }
 
-//console.log(mdLinks('lili.md'));
+console.log(mdLinks('/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/lili.md'));
 
 //C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/lili.md
