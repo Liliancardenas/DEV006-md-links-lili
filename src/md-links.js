@@ -10,6 +10,7 @@ function mdLinks(route) {
    if (abs == false) {
       let newRoute = rel;
        abs = isABsolute(newRoute);
+       console.log(newRoute);
    } 
 
    if ( abs === true && val === true && md === true ) {
@@ -23,6 +24,6 @@ function mdLinks(route) {
   
 }
 
-console.log(mdLinks(''));
+//console.log(mdLinks('lili.md'));
 
 //C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/lili.md
