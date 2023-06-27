@@ -108,5 +108,8 @@ module.exports =  {  // crear un objeto con lo que vamos a exporta
  isABsolute,
  isRelative,
  isValid,
+ fileOrDirectory,
+ readDirectory,
+ readContent,
  isMarkdown
 };
