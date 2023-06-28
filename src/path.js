@@ -1,6 +1,6 @@
 const path = require('path'); // para llamar ruta absoluta desde nodeJS path es un modulo 
 const fs = require('fs'); // file system hace la lectura de los archivos 
-const { log } = require('console');
+const { log, Console } = require('console');
 
 
 // ----------Funcion que lee una ruta absoluta----------
@@ -11,7 +11,7 @@ function isABsolute(route) { // isAbsolute es una propiedad de nodeJs para valid
     console.log('Error: ', error);
   }
 } 
-//console.log(isABsolute('C:\\Users\\56957\\Desktop'));
+console.log(isABsolute('C:\\Users\\56957\\Desktop'));
 
 
 
@@ -23,7 +23,7 @@ function isRelative(route) {
     console.log('Error: ', error);
   }
 }
- //console.log(isRelative('lili.md'))
+ console.log(isRelative('lili.md'))
 
 
 
@@ -37,7 +37,7 @@ function isRelative(route) {
     return false;
   }
  }
-//console.log(isValid('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'));
+console.log(isValid('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'));
 
 
 
@@ -55,7 +55,7 @@ function fileOrDirectory(route) { //
         console.log('Error: Archivo/directorio roto o no encontrado', error); 
   }
 }
-//console.log(fileOrDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/lili.md'))
+console.log(fileOrDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'))
 
 
 
@@ -67,7 +67,7 @@ function readDirectory(route) {
     console.log('Error: ', error);
   }
 }
-//console-log(readDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/'));
+console-log(readDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/'));
 
 
 //----------Funcion que lee el archivo----------
@@ -79,17 +79,29 @@ function readDirectory(route) {
         })
   })
   .then ((content) => {
-   // console.log('muestra la el contenido del archivo', content);
-    const links = content.match(/https?:\/\/\S*/g); // match devuelve todas las ocurrencias de una expresion regular
-    console.log(links);
+   console.log('muestra la el contenido del archivo', content);
+    //const links = content.match(/https?:\/\/\S*/g); // match devuelve todas las ocurrencias de una expresion regular
+    //console.log(links);
   })
   .catch ((error) => {
     console.log('Error: ', error);
   });
 }
-//console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'));
+console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'));
 
 
+
+//function extraerLinks(readContent) {
+  //try {
+   // const links = readContent.match(/https?:\/\/\S*/g);
+    //return links;
+ // } catch (error) {
+   // console.log('Error: ', error);
+    
+//  }
+//}
+
+//console.log(extraerLinks('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'));
 
 // ----------Funcion que lee si la ruta es .md----------
 function isMarkdown(route) {
@@ -102,8 +114,10 @@ function isMarkdown(route) {
   }
   //console.log(isMarkdown('C:\Users\\56957\\Desktop\\Laboratoria\\MD-LINKS\\DEV006-md-links-lili\\package-lock.json'))
   
+
   
-  
+ 
+
 module.exports =  {  // crear un objeto con lo que vamos a exporta
  isABsolute,
  isRelative,

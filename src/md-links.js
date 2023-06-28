@@ -1,10 +1,9 @@
-const { isABsolute, isRelative, isValid, isMarkdown } = require("./path");
+const { isABsolute, isRelative, isValid, fileOrDirectory, readDirectory, readContent, isMarkdown } = require("./path");
 
 function analyzeRoute(route) {
    let abs = isABsolute(route);
    const rel = isRelative(route);
    const val = isValid(route);
-   const md = isMarkdown(route);
    let result;
 
    if (abs == false) {
