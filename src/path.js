@@ -11,7 +11,7 @@ function isABsolute(route) { // isAbsolute es una propiedad de nodeJs para valid
     console.log('Error: ', error);
   }
 } 
-console.log(isABsolute('C:\\Users\\56957\\Desktop'));
+//console.log(isABsolute('C:\\Users\\56957\\Desktop'));
 
 
 
@@ -23,7 +23,7 @@ function isRelative(route) {
     console.log('Error: ', error);
   }
 }
- console.log(isRelative('lili.md'))
+ //console.log(isRelative('lili.md'))
 
 
 
@@ -37,7 +37,7 @@ function isRelative(route) {
     return false;
   }
  }
-console.log(isValid('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'));
+//console.log(isValid('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'));
 
 
 
@@ -55,7 +55,7 @@ function fileOrDirectory(route) { //
         console.log('Error: Archivo/directorio roto o no encontrado', error); 
   }
 }
-console.log(fileOrDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'))
+//console.log(fileOrDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'))
 
 
 
@@ -67,7 +67,7 @@ function readDirectory(route) {
     console.log('Error: ', error);
   }
 }
-console-log(readDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/'));
+//console-log(readDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/'));
 
 
 //----------Funcion que lee el archivo----------
@@ -79,29 +79,30 @@ console-log(readDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md
         })
   })
   .then ((content) => {
-   console.log('muestra la el contenido del archivo', content);
-    //const links = content.match(/https?:\/\/\S*/g); // match devuelve todas las ocurrencias de una expresion regular
-    //console.log(links);
+   const links = extractLinks(content);
+   console.log('Enlaces encontrados:', links);
+   return links;
   })
   .catch ((error) => {
     console.log('Error: ', error);
   });
 }
-console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'));
+//console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'));
 
 
 
-//function extraerLinks(readContent) {
-  //try {
-   // const links = readContent.match(/https?:\/\/\S*/g);
-    //return links;
- // } catch (error) {
-   // console.log('Error: ', error);
-    
-//  }
-//}
+function extractLinks(content) {
+    const regex = content.matchAll(/\[([^\]]+)\]\(([^\)]+)\)/g);
+    const results = [...regex];
+    const links = results.map(result => ({ 
+      text : result[1],
+      href: result[2]
+      }))
+    return links;
+  
+}
 
-//console.log(extraerLinks('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'));
+
 
 // ----------Funcion que lee si la ruta es .md----------
 function isMarkdown(route) {
@@ -112,9 +113,7 @@ function isMarkdown(route) {
     console.log('Error: ', error);
    }
   }
-  //console.log(isMarkdown('C:\Users\\56957\\Desktop\\Laboratoria\\MD-LINKS\\DEV006-md-links-lili\\package-lock.json'))
-  
-
+ // console.log(isMarkdown('C:\Users\\56957\\Desktop\\Laboratoria\\MD-LINKS\\DEV006-md-links-lili\\package-lock.json'))
   
  
 
@@ -127,3 +126,15 @@ module.exports =  {  // crear un objeto con lo que vamos a exporta
  readContent,
  isMarkdown
 };
+
+
+
+
+
+
+
+
+
+
+
+
