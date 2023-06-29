@@ -76,7 +76,7 @@ function readDirectory(route) {
         })
   })
   .then ((content) => {
-   const links = extractLinks(content);
+   const links = extractLinks(route, content);
    console.log('Enlaces encontrados:', links);
    return links;
   })
@@ -87,17 +87,20 @@ function readDirectory(route) {
 
 
 
-function extractLinks(content) {
-    const regex = content.matchAll(/\[([^\]]+)\]\(([^\)]+)\)/g);
+function extractLinks(route, content) {
+    const regex = content.matchAll(/\[([^\]]+)\]\((http[s]?:\/\/[^\)]+)\)/g);
     const results = [...regex];
-    const links = results.map(result => ({ 
+    const links = results.map((result) => ({ 
       text : result[1],
-      href: result[2]
+      href: result[2],
+      File: route
       }))
+
     return links;
   
 }
 
+//console.log(extractLinks('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'))
 
 
 // ----------Funcion que lee si la ruta es .md----------
