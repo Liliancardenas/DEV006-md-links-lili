@@ -42,7 +42,7 @@ function isRelative(route) {
 
 
 // ----------Función que ve si es directorio o archivo---------
-function fileOrDirectory(route) { // 
+function isFileOrDirectory(route) { // 
   try {
   const inspectRoute = path.resolve(route);
   const stats = fs.statSync(inspectRoute); // statSync identifica si es un directorio o archivo 
@@ -55,19 +55,21 @@ function fileOrDirectory(route) { //
         console.log('Error: Archivo/directorio roto o no encontrado', error); 
   }
 }
-//console.log(fileOrDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'))
+//console.log(isFileOrDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/'));
 
 
 
 //----------Funcion que lee los directorios---------- 
 function readDirectory(route) {
   try {
-   return fs.readdirSync(route);
-  } catch (error) {
+    return fs.readdirSync(route);
+  }catch (error) {
     console.log('Error: ', error);
+    return [];
   }
 }
-//console-log(readDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/'));
+
+//console.log(readDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili7testFile/'));
 
 
 //----------Funcion que lee el archivo----------
@@ -87,7 +89,7 @@ function readDirectory(route) {
     console.log('Error: ', error);
   });
 }
-//console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'));
+//console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'));
 
 
 
@@ -121,7 +123,7 @@ module.exports =  {  // crear un objeto con lo que vamos a exporta
  isABsolute,
  isRelative,
  isValid,
- fileOrDirectory,
+ isFileOrDirectory,
  readDirectory,
  readContent,
  isMarkdown

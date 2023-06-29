@@ -1,28 +1,28 @@
-const { isABsolute, isRelative, isValid, fileOrDirectory, readDirectory, readContent, isMarkdown } = require("./path");
+const { isABsolute, isRelative, isValid, isFileOrDirectory, readContent, readDirectory, isMarkdown } = require('./path');
 
 function analyzeRoute(route) {
-   let abs = isABsolute(route);
-   const rel = isRelative(route);
-   const val = isValid(route);
+   let absolute = isABsolute(route);
+   const relative = isRelative(route);
+   const valid = isValid(route);
+   const fileOrDirectory = isFileOrDirectory(route);
    const md = isMarkdown(route)
-   let result;
 
-   if (abs == false) {
-      let newRoute = rel;
-       abs = isABsolute(newRoute);
+   if (absolute === false) {
+      let newRoute = relative;
+       absolute = isABsolute(newRoute);
        console.log(newRoute);
    } 
 
-  if ( abs === true && val === true && md === true ) {
-    result = true;
-   } 
-   else {
-      result = false;
-   }
-    
-    return result;
-  
+  if ( absolute === true && valid === true ) {
+   if (fileOrDirectory === 'Es un Archivo' && md === true) {
+    return readContent(route);
+  } else if (fileOrDirectory === 'Es un Directorio') {
+    return readDirectory(route);
+  }
+}
 }
 
-console.log(analyzeRoute('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'))
-//
+module.exports = {
+    analyzeRoute
+}
+console.log(analyzeRoute('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'))
