@@ -11,7 +11,6 @@ function isABsolute(route) { // isAbsolute es una propiedad de nodeJs para valid
     console.log('Error: ', error);
   }
 } 
-//console.log(isABsolute('C:\\Users\\56957\\Desktop'));
 
 
 
@@ -23,7 +22,6 @@ function isRelative(route) {
     console.log('Error: ', error);
   }
 }
- //console.log(isRelative('lili.md'))
 
 
 
@@ -37,7 +35,6 @@ function isRelative(route) {
     return false;
   }
  }
-//console.log(isValid('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'));
 
 
 
@@ -55,7 +52,6 @@ function isFileOrDirectory(route) { //
         console.log('Error: Archivo/directorio roto o no encontrado', error); 
   }
 }
-//console.log(isFileOrDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/'));
 
 
 
@@ -69,7 +65,6 @@ function readDirectory(route) {
   }
 }
 
-//console.log(readDirectory('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili7testFile/'));
 
 
 //----------Funcion que lee el archivo----------
@@ -89,7 +84,6 @@ function readDirectory(route) {
     console.log('Error: ', error);
   });
 }
-//console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'));
 
 
 
@@ -115,8 +109,7 @@ function isMarkdown(route) {
     console.log('Error: ', error);
    }
   }
- // console.log(isMarkdown('C:\Users\\56957\\Desktop\\Laboratoria\\MD-LINKS\\DEV006-md-links-lili\\package-lock.json'))
-  
+
  
 
 module.exports =  {  // crear un objeto con lo que vamos a exporta

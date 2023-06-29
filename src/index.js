@@ -25,4 +25,4 @@ function analyzeRoute(route) {
 module.exports = {
     analyzeRoute
 }
-console.log(analyzeRoute('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/README.md'))
+ console.log(analyzeRoute('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/'))
