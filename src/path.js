@@ -1,5 +1,6 @@
 const path = require('path'); // para llamar ruta absoluta desde nodeJS path es un modulo 
 const fs = require('fs'); // file system hace la lectura de los archivos 
+const axios = require('axios'); // Axios es una biblioteca de http se utiliza para llamar http(links) y ver sus respuestas (estado)
 const { log, Console } = require('console');
 
 
@@ -85,12 +86,27 @@ function readDirectory(route) {
   });
 }
 
+console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'))
+
+function getLinksStatus(links) {
+  return axios.get(links)
+    .then((response) => {
+      const status = response.status;
+      const statusText = response.statusText;
+      return { status: status, message: statusText };
+    })
+    .catch((error) => {
+      console.log('Error:', error.message);
+      throw error;
+    });
+}
+
 
 
 function extractLinks(route, content) {
     const regex = content.matchAll(/\[([^\]]+)\]\((http[s]?:\/\/[^\)]+)\)/g);
-    const results = [...regex];
-    const links = results.map((result) => ({ 
+    const results = [...regex]; // convertimos regex en array (Spread Operator)
+    const links = results.map((result) => ({ // MAP para iterar a través de los elementos dentro de un arreglo
       text : result[1],
       href: result[2],
       File: route
@@ -100,7 +116,6 @@ function extractLinks(route, content) {
   
 }
 
-//console.log(extractLinks('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'))
 
 
 // ----------Funcion que lee si la ruta es .md----------
@@ -113,7 +128,8 @@ function isMarkdown(route) {
    }
   }
 
- 
+
+
 
 module.exports =  {  // crear un objeto con lo que vamos a exporta
  isABsolute,
