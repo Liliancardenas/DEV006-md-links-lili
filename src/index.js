@@ -19,9 +19,10 @@ function analyzeRoute(route) {
   } else if (fileOrDirectory === 'Es un Directorio') {
     return readDirectory(route);
   }
+} 
+return 'Ruta invalida o no es un archivo .md';
 }
-}
-
+//console.log(analyzeRoute('testFile/doc.txt'))
 
 
 

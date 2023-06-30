@@ -76,17 +76,44 @@ function readDirectory(route) {
             return resolve(content);
         })
   })
-  .then ((content) => {
-   const links = extractLinks(route, content);
-   console.log('Enlaces encontrados:', links);
-   return links;
+  /*.then(content => {
+    console.log(content); // Aquí puedes hacer lo que necesites con el contenido leído
   })
-  .catch ((error) => {
-    console.log('Error: ', error);
-  });
+  .catch(error => {
+    console.error(error); // Manejo de errores en caso de que ocurra alguno
+  });*/
 }
+ /* .then ((content) => {
+    const links = extractLinks(route, content);
+    console.log('Enlaces encontrados:', links);
+    return links;
+   })
+   .catch ((error) => {
+     console.log('Error: ', error);
+   });*/
 
-console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'))
+    
+   /* const promises = links.map((link) => {
+      return getLinksStatus(link.href)
+        .then((response) => {
+          return { ...link, ...response };
+        })
+        .catch((error) => {
+          return { ...link, status: null, message: 'FAIL' };
+        });
+    });
+    return Promise.all(promises);
+  })
+  .then((responses) => {
+    console.log('Enlaces encontrados', responses);
+    return responses;
+  })
+  .catch((error) => {
+    console.log('Error:', error);
+  });
+}*/
+
+//console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'))
 
 function getLinksStatus(links) {
   return axios.get(links)
@@ -104,16 +131,15 @@ function getLinksStatus(links) {
 
 
 function extractLinks(route, content) {
-    const regex = content.matchAll(/\[([^\]]+)\]\((http[s]?:\/\/[^\)]+)\)/g);
+    const regex = content.matchAll(/\[([^\]]+)\]\((http[s]?:\/\/[^\)]+)\)/g); 
     const results = [...regex]; // convertimos regex en array (Spread Operator)
-    const links = results.map((result) => ({ // MAP para iterar a través de los elementos dentro de un arreglo
+    const links = results.map((result) => ({  // MAP para iterar a través de los elementos dentro de un arreglo
       text : result[1],
       href: result[2],
       File: route
       }))
 
     return links;
-  
 }
 
 
