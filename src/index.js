@@ -1,4 +1,4 @@
-const { isABsolute, isRelative, isValid, isFileOrDirectory, readContent, readDirectory, isMarkdown } = require('./path');
+const { isABsolute, isRelative, isValid, isFileOrDirectory, readFile, readDirectory, isMarkdown } = require('./path');
 
 function analyzeRoute(route) {
    let absolute = isABsolute(route);
@@ -10,12 +10,11 @@ function analyzeRoute(route) {
    if (absolute === false) {
       let newRoute = relative;
        absolute = isABsolute(newRoute);
-       console.log(newRoute);
    } 
 
   if ( absolute === true && valid === true ) {
    if (fileOrDirectory === 'Es un Archivo' && md === true) {
-    return readContent(route);
+    return readFile(route);
   } else if (fileOrDirectory === 'Es un Directorio') {
     return readDirectory(route);
   }
