@@ -69,54 +69,43 @@ function readDirectory(route) {
 
 
 //----------Funcion que lee el archivo----------
- function readContent(route) {
+function readContent(route) {
   return new Promise((resolve, reject) => {
     fs.readFile(route, 'utf8', (error, content) => {
-            if (error) return reject(error);
-            return resolve(content);
-        })
-  })
-  /*.then(content => {
-    console.log(content); // Aquí puedes hacer lo que necesites con el contenido leído
-  })
-  .catch(error => {
-    console.error(error); // Manejo de errores en caso de que ocurra alguno
-  });*/
-}
- /* .then ((content) => {
-    const links = extractLinks(route, content);
-    console.log('Enlaces encontrados:', links);
-    return links;
-   })
-   .catch ((error) => {
-     console.log('Error: ', error);
-   });*/
-
-    
-   /* const promises = links.map((link) => {
-      return getLinksStatus(link.href)
-        .then((response) => {
-          return { ...link, ...response };
-        })
-        .catch((error) => {
-          return { ...link, status: null, message: 'FAIL' };
-        });
+      if (error) return reject(error);
+      resolve(content);
     });
-    return Promise.all(promises);
   })
-  .then((responses) => {
-    console.log('Enlaces encontrados', responses);
-    return responses;
-  })
-  .catch((error) => {
-    console.log('Error:', error);
-  });
+}
+    /*.then((content) => {
+      const url = extractLinks(route, content);
+      console.log('Enlaces encontrados:', url);
+    
+  
+     const promises = url.map((link) => {
+        return getLinksStatus(link.href)
+          .then((response) => {
+            return { ...link, ...response };
+          })
+          .catch((error) => {
+            return { ...link, status: null, message: 'FAIL' };
+          });
+      });
+      return Promise.all(promises);
+    })
+     .then((responses) => {
+      console.log('Enlaces encontrados', responses);
+      return responses;
+    })
+    .catch((error) => {
+      console.log('Error:', error);
+    });
 }*/
 
 //console.log(readContent('C:/Users/56957/Desktop/Laboratoria/MD-LINKS/DEV006-md-links-lili/testFile/lili.md'))
 
-function getLinksStatus(links) {
-  return axios.get(links)
+function getLinksStatus(url) {
+  return axios.get(url)
     .then((response) => {
       const status = response.status;
       const statusText = response.statusText;
@@ -164,7 +153,9 @@ module.exports =  {  // crear un objeto con lo que vamos a exporta
  isFileOrDirectory,
  readDirectory,
  readContent,
- isMarkdown
+ isMarkdown,
+ extractLinks,
+ getLinksStatus
 };
 
 

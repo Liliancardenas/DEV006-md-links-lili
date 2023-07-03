@@ -22,7 +22,7 @@ function analyzeRoute(route) {
 } 
 return 'Ruta invalida o no es un archivo .md';
 }
-//console.log(analyzeRoute('testFile/doc.txt'))
+//console.log(analyzeRoute('testFile/lili.md'))
 
 
 
