@@ -24,9 +24,8 @@ function analyzeRoute(route) {
     reject('Ruta inválida o no es un archivo markdown');
   });
 }
-//console.log(analyzeRoute('testFile/lili.md'))
 
-
+//console.log(analyzeRoute('testFile'))
 
 module.exports = {
     analyzeRoute
