@@ -74,11 +74,12 @@ function getLinksStatus(url) {
     .then((response) => {
       const status = response.status;
       const statusText = response.statusText;
-      return { status: status, message: statusText };
+      return { 
+        status: status, 
+        message: statusText };
     })
     .catch((error) => {
-      console.log('Error:', error.message);
-      throw error;
+      throw error, error.message;
     });
 }
 
@@ -87,7 +88,7 @@ function getLinksStatus(url) {
 function extractLinks(route, content) {
     const regex = content.matchAll(/\[([^\]]+)\]\((http[s]?:\/\/[^\)]+)\)/g); 
     const results = [...regex]; // convertimos regex en array (Spread Operator)
-    const links = results.map((result) => ({  // MAP para iterar a través de los elementos dentro de un arreglo
+    const links = results.map((result) => ({  // MAP para iterar a través de los elementos dentro de un arreglo que es un objeto
       text : result[1],
       href: result[2],
       file: route
