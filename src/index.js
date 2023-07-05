@@ -25,7 +25,6 @@ function analyzeRoute(route) {
   });
 }
 
-//console.log(analyzeRoute('testFile'))
 
 module.exports = {
     analyzeRoute

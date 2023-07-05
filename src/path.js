@@ -48,33 +48,10 @@ function isFileOrDirectory(route) { //
 
 
 //----------Funcion que lee los directorios---------- 
-/*function readDirectory(route) {
-  return new Promise((resolve, reject) => {
-    fs.readdir(route, (err, files) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(files);
-      }
-    });
-  })
-  .then((files) => {
-    console.log(files);
-    return files; 
-  })
-  .catch((error) => {
-    console.log(error); 
-    throw error; 
-  });
-}*/
-
 function readDirectory(route) {
-  try {
     return fs.readdirSync(route);
-  }catch (error) {
-    return 'Ruta no existe';
-  }
 }
+
 
 //----------Funcion que lee el archivo----------
 function readFile(route) { 
@@ -120,13 +97,10 @@ function extractLinks(route, content) {
 
 // ----------Funcion que lee si la ruta es .md----------
 function isMarkdown(route) {
-  try {
     const extension = path.extname(route); // extname para obtener la extensión del archivo en la ruta 
     return extension.toLowerCase() === '.md'; // se compara si la extensión convertida a minúsculas es igual a ".md"
-   } catch (error) {
-    return 'No es un archivo markdown'
    }
-  }
+
 
 
 
