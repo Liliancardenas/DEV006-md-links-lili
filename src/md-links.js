@@ -1,7 +1,6 @@
 const { analyzeRoute } = require('./index');
 const {extractLinks, getLinksStatus } = require ('./path');
 const route = process.argv[2]; //array contiene los argumentos de la linea de comando pasados por línea de comandos ejemplo (0=node, 1=archivo.js, 2=archivo o ruta mas argumento)
-const validate = process.argv.includes('--validate'); //verifica si el argumento --validate está presente en la matriz process.argv. Devuelve true si el argumento está presente y false en caso contrario.
 
 
 
@@ -36,16 +35,14 @@ function mdLinks(route, options = { validate }) { // le pasamos dos argumentos
       .then((responses) => { // para manejar los resultados 
           console.log('Enlaces encontrados:', responses);
           resolve(responses)
-         // return 'Enlaces encontrados:', responses;
-       
+      
       })
       .catch((error) => {
         console.log('Ruta invalida o no es un archivo markdown')
-        reject(error);
       });
     } )
  
 }
 
 
-mdLinks(route, { validate });
+mdLinks(route, { validate: true });

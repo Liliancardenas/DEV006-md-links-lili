@@ -20,28 +20,20 @@ function isRelative(route) {
 
 // ----------Funcion que lee si una ruta es valida o no----------
  function isValid(route) {
-  try {
    fs.accessSync(route);  //verifica si se puede acceder a un archivo o directorio en una ruta específica de manera síncrona, lo que significa que bloquea la ejecución del programa hasta que se complete la verificación.
-    return true;         // realiza exepcion (un evento inesperado)
-  } catch (error) { 
-    return 'La ruta no existe';
-  }
+    return true;       
  }
 
 
 
 // ----------Función que ve si es directorio o archivo---------
 function isFileOrDirectory(route) { // 
-  try {
   const inspectRoute = path.resolve(route);  // resolve para convertirla en una ruta absoluta
   const stats = fs.statSync(inspectRoute); // statSync es una función sincrónica que devuelve un objeto, (Informacion sobre la ruta) 
   if (stats.isFile()) {
     return 'Es un Archivo';
   } else {
     return 'Es un Directorio';
-  }
-    } catch (error) {
-      return 'Error: Archivo/directorio roto o no encontrado' 
   }
 }
 
