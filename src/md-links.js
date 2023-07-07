@@ -46,3 +46,7 @@ function mdLinks(route, options = { validate }) { // le pasamos dos argumentos
 
 
 mdLinks(route, { validate: true });
+
+module.exports = {
+  mdLinks
+}

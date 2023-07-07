@@ -29,5 +29,3 @@ function analyzeRoute(route) {
 module.exports = {
     analyzeRoute
 }
-
-
