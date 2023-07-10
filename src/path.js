@@ -19,14 +19,10 @@ function isRelative(route) {
 
 
 // ----------Funcion que lee si una ruta es valida o no----------
-function isValid(route) {
-  try {
-    fs.accessSync(route);
-    return true;
-  } catch (error) {
-    return false;
-  }
-}
+ function isValid(route) {
+   fs.accessSync(route);  //verifica si se puede acceder a un archivo o directorio en una ruta específica de manera síncrona, lo que significa que bloquea la ejecución del programa hasta que se complete la verificación.
+    return true;       
+ }
 
 
 
@@ -112,15 +108,3 @@ module.exports =  {  // crear un objeto con lo que vamos a exporta
  extractLinks,
  getLinksStatus
 };
-
-
-
-
-
-
-
-
-
-
-
-
