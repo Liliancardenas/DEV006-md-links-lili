@@ -8,20 +8,22 @@ function analyzeRoute(route) {
     const fileOrDirectory = isFileOrDirectory(route);
     const md = isMarkdown(route);
 
-    if (absolute === false) {
+    if (!absolute) {
       let newRoute = relative;
       absolute = isABsolute(newRoute);
     }
 
-    if (absolute === true && valid === true) {
+    if (absolute && valid) {
       if (fileOrDirectory === 'Es un Archivo' && md === true) {
         resolve(readFile(route));
       } else if (fileOrDirectory === 'Es un Directorio') {
         resolve(readDirectory(route)); 
+      } else {
+        reject('Ruta inválida o no es un archivo markdown');
       }
+    } else {
+      reject('Ruta inválida o no es un archivo markdown');
     }
-
-    reject('Ruta inválida o no es un archivo markdown');
   });
 }
 

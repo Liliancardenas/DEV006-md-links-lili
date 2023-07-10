@@ -10,7 +10,7 @@ function mdLinks(route, options = { validate }) { // le pasamos dos argumentos
   
     analyzeRoute(route) // esta funcion devuelve una promesa
     
-      .then((content) => { //.then para manejar el resultado de la promesa
+      .then((content) => { //.then para manejar el resultado de la promesa de anlyzate route
         if (Array.isArray(content)) { //Se verifica si el contenido devuelto por la promesa es un arreglo 
           log('Es un directorio', content)
           resolve(content); 
@@ -18,9 +18,9 @@ function mdLinks(route, options = { validate }) { // le pasamos dos argumentos
         else if (!options.validate) { //verificamos que validate sea false
           links = extractLinks(route, content); // llamamos la funcion 
           return  links;// retorna los enlases encontrados
-        } else { // cuando option si esta presente
+        } else { 
           const promises = extractLinks(route, content).map((link) => { // aqui optenemos los enlases igual que en el if pero lo utilizamos con map para iterar en cada enlase y crear un nuevo array de promesa
-            return getLinksStatus(link.href) // dentro de cada promesa llamamos esta funcion, esta funcion tambien tiene una promesa que se asigna a promise
+            return getLinksStatus(link.href) //  Esta función se encarga de realizar una solicitud a la URL del enlace y devuelve una promesa que se asigna a la variable promise.
               .then((response) => {
                 return { ...link, ...response };
               })
