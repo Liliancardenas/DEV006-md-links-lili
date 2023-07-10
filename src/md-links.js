@@ -39,7 +39,7 @@ function mdLinks(route, options = { validate }) { // le pasamos dos argumentos
       })
       .catch((error) => {
         log('Ruta invalida o no es un archivo markdown');
-        reject ('Ruta invalida o no es un archivo markdown');
+        //reject ('Ruta invalida o no es un archivo markdown');
       });
     })
 }
