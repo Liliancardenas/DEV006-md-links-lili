@@ -77,7 +77,7 @@ describe('mdLinks', () => {
 
 describe('getLinksStatus', () => {
   it('debería retornar el link con su status y su statusText', () => {
-    const url = 'http://www.google.com'; // Corregido: agregar "http://" al inicio del URL
+    const url = 'http://www.google.com'; 
     return getLinksStatus(url).then((result) => {
       expect(result).toEqual({
         status: 200,

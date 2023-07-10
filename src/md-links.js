@@ -32,7 +32,7 @@ function mdLinks(route, options = { validate }) { // le pasamos dos argumentos
           return Promise.all(promises); //Promise.all, para esperar a que todas las promesas se resuelvan
         }
       })
-      .then((responses) => { // para manejar los resultados 
+      .then((responses) => { // para manejar los resultados de la promesa principal
           log('Enlaces encontrados:', responses);
           resolve(responses)
       
@@ -45,11 +45,7 @@ function mdLinks(route, options = { validate }) { // le pasamos dos argumentos
 }
 
 
-mdLinks(route, { validate: false });
-
-module.exports = {
-  mdLinks
-}
+mdLinks(route, { validate: true });
 
 module.exports = {
   mdLinks
