@@ -1,7 +1,7 @@
 const { analyzeRoute } = require('./index');
 const {extractLinks, getLinksStatus } = require ('./path');
 const route = process.argv[2]; //array contiene los argumentos de la linea de comando pasados por línea de comandos ejemplo (0=node, 1=archivo.js, 2=archivo o ruta mas argumento)
-
+const { log, Console } = require('console');
 
 
 function mdLinks(route, options = { validate }) { // le pasamos dos argumentos
@@ -12,7 +12,7 @@ function mdLinks(route, options = { validate }) { // le pasamos dos argumentos
     
       .then((content) => { //.then para manejar el resultado de la promesa
         if (Array.isArray(content)) { //Se verifica si el contenido devuelto por la promesa es un arreglo 
-          console.log('Es un directorio', content)
+          log('Es un directorio', content)
           resolve(content); 
         }
         else if (!options.validate) { //verificamos que validate sea false
@@ -33,19 +33,19 @@ function mdLinks(route, options = { validate }) { // le pasamos dos argumentos
         }
       })
       .then((responses) => { // para manejar los resultados 
-          console.log('Enlaces encontrados:', responses);
+          log('Enlaces encontrados:', responses);
           resolve(responses)
       
       })
       .catch((error) => {
-        console.log('Ruta invalida o no es un archivo markdown')
+        log('Ruta invalida o no es un archivo markdown');
+        reject ('Ruta invalida o no es un archivo markdown');
       });
     } )
- 
 }
 
 
-mdLinks(route, { validate: true });
+mdLinks(route, { validate: false });
 
 module.exports = {
   mdLinks

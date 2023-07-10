@@ -1,10 +1,13 @@
 const { mdLinks } = require('../src/md-links');
+const { getLinksStatus, extractLinks, isFileOrDirectory } = require('../src/path')
 
-const route = './testFile/lili.md';
-const options = { validate: true };
+
+
 
 describe('mdLinks', () => {
   it('debería retornar una promesa que se resuelve con un array de objeto', (done) => {
+    const route = './testFile/lili.md';
+    const options = { validate: true }; 
     const result = mdLinks(route, options);
     expect(result).resolves.toEqual([
       {
@@ -33,10 +36,81 @@ describe('mdLinks', () => {
 });
 
 
+describe('mdLinks', () => {
+  it('debería retornar una promesa que se resuelve con un array de objeto', (done) => {
+    const route = './testFile/lili.md';
+    const options = { validate: false }; 
+    const result = mdLinks(route, options);
+    expect(result).resolves.toEqual([
+      {
+        text: 'Arreglos',
+        href: 'https://curriculum.---',
+        file: './testFile/lili.md',
+      },
+      {
+        text: 'Array - MDN',
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/',
+        file: './testFile/lili.md',
+      },
+      {
+        text: 'Objetos en JavaScript',
+        href: 'https://curriculum.laboratoria.la/es/topics/javascript/05-objects/01-objects',
+        file: './testFile/lili.md',
+      }
+    ]).then(done);
+  });
+});
+
+
+describe('mdLinks', () => {
+  it('debería retornar un array con los archivos', (done) => {
+    const route = './testFile';
+    const options = { validate: true };
+    const result = mdLinks(route, options);
+    expect(result).resolves.toEqual(
+      [ 'doc.txt', 'lili.md' ]
+      ).then(done);
+    })
+  });
 
 
 
+describe('getLinksStatus', () => {
+  it('debería retornar el link con su status y su statusText', () => {
+    const url = 'http://www.google.com'; // Corregido: agregar "http://" al inicio del URL
+    return getLinksStatus(url).then((result) => {
+      expect(result).toEqual({
+        status: 200,
+        message: 'OK'
+      });
+    });
+  });
+});
 
 
 
+describe('extractLinks', () => {
+  it('debería retornar text, href y file', () => {
+    const route = './testFile/lili.md';
+    const content = '[Arreglos](https://curriculum.---)\n[Array - MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/)\n[Objetos en JavaScript](https://curriculum.laboratoria.la/es/topics/javascript/05-objects/01-objects)';
+    const result = extractLinks(route, content);
+    expect(result).toEqual([
+      {
+        text: 'Arreglos',
+        href: 'https://curriculum.---',
+        file: './testFile/lili.md',
+      },
+      {
+        text: 'Array - MDN',
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/',
+        file: './testFile/lili.md',
+      },
+      {
+        text: 'Objetos en JavaScript',
+        href: 'https://curriculum.laboratoria.la/es/topics/javascript/05-objects/01-objects',
+        file: './testFile/lili.md',
+      }
+    ]);
+  });
+});
 
