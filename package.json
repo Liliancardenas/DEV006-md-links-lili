@@ -13,6 +13,9 @@
     "axios": "^1.4.0"
   },
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest"
+  },
+  "jest": {
+    "collectCoverage": true
   }
 }

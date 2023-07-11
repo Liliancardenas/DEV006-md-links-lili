@@ -17,7 +17,7 @@ function mdLinks(route, options = { validate }) { // le pasamos dos argumentos
         }
         else if (!options.validate) { //verificamos que validate sea false
           links = extractLinks(route, content); // llamamos la funcion 
-          return  links;// retorna los enlases encontrados
+          resolve(links);// retorna los enlases encontrados
         } else { 
           const promises = extractLinks(route, content).map((link) => { // aqui optenemos los enlases igual que en el if pero lo utilizamos con map para iterar en cada enlase y crear un nuevo array de promesa
             return getLinksStatus(link.href) //  Esta función se encarga de realizar una solicitud a la URL del enlace y devuelve una promesa que se asigna a la variable promise.
@@ -33,20 +33,22 @@ function mdLinks(route, options = { validate }) { // le pasamos dos argumentos
         }
       })
       .then((responses) => { // para manejar los resultados de la promesa principal
-          log('Enlaces encontrados:', responses);
+          //log('Enlaces encontrados:', responses);
           resolve(responses)
       
       })
       .catch((error) => {
-        log('Ruta invalida o no es un archivo markdown');
-        //reject ('Ruta invalida o no es un archivo markdown');
+        //log('Ruta invalida o no es un archivo markdown');
+        reject ('Ruta invalida o no es un archivo markdown');
       });
     })
 }
 
 
-mdLinks(route, { validate: true });
+mdLinks(route, { validate: false });
 
 module.exports = {
   mdLinks
 }
+
+
